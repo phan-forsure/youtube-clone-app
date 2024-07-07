@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    background-color: #121212;
+}
+
+.app {
+    grid-template-areas: 'head head head head head' 'nav main main main main';
+}
+
+header {
+    grid-area: head;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+}
+
+@layer base {
+    .bg-main {
+        background-color: #121212;
+    }
+
+    .color-secondary {
+        color: #1f1f1f;
+    }
+
+    .bg-sec {
+        background-color: #1f1f1f;
+    }
+
+    .border-second {
+        border-color: #1f1f1f;
+    }
+
+    .border-1 {
+        border-width: 1px;
+    }
+}

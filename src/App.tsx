@@ -1,11 +1,14 @@
 import React from 'react'
+import Navbar from './Navbar'
+import Header from './Header'
 
 function App() {
 
   return (
     <>
-     <div className="app">
-      <h1 className='text-4xl text-center'>Hello World</h1>
+     <div className="app grid grid-cols-5">
+      <Header />
+      <Navbar />
      </div>
     </>
   )
