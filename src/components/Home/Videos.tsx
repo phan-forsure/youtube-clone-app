@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -19,10 +20,6 @@ export default function Videos() {
         return response.json()
     }
 
-    useEffect(() => {
-        console.log(query.data?.items);
-    }, []);
-
     if (query.isPending) {
         return <div className="text-white">Loading...</div>
     }
@@ -32,11 +29,13 @@ export default function Videos() {
     }
 
     return (
-        <section className="videos text-white grid grid-cols-3">
+        <section className="videos text-white grid grid-cols-4">
             {query.data?.items.map(item => (
-                <div key={item.id.videoId} className="data-unit m-4 relative bottom-0 hover:bottom-1 transition-all">
-                    <img className='w-96 h-72 cursor-pointer' src={item.snippet.thumbnails.high.url} alt="Thumbnail" />
-                    <h2 className='w-full text-center mt-2'>{item.snippet.channelTitle}</h2>
+                <div key={item.id.videoId} className="data-unit m-2 relative bottom-0 hover:bottom-1 transition-all">
+                    <Link to={`/video/${item.id.videoId}`}><img key={item.id.videoId} className='w-80 h-64 cursor-pointer rounded-2xl' src={item.snippet.thumbnails.high.url} alt="Thumbnail" /></Link>
+                    <h2 key={item.id.videoId} className='w-full mt-2 font-bold'>{item.snippet.title}</h2>
+                    <p key={item.id.videoId} className='w-full opacity-60'>{item.snippet.channelTitle}</p>
+                    {/*  */}
                 </div>
             ))}
         </section>

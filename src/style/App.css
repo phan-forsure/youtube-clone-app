@@ -8,7 +8,15 @@ body {
 }
 
 .app {
-    grid-template-areas: 'head head head head head' 'nav main main main main';
+    grid-template-areas:
+        'head head head head head head head head head head'
+        'nav nav main main main main main main main main';
+}
+
+.not-nav {
+    grid-template-areas:
+        'head head head head head head head head head head'
+        'nav main main main main main main main main main';
 }
 
 header {
@@ -23,7 +31,8 @@ nav {
     grid-area: nav;
     height: 89vh;
     width: 90%;
-    position: relative;
+    position: sticky;
+    top: 79px;
     overflow-y: scroll;
 }
 
@@ -31,7 +40,6 @@ nav::-webkit-scrollbar {
     width: 7px;
 }
 
-/* Track */
 nav::-webkit-scrollbar-track {
     background-color: transparent;
 }
@@ -40,14 +48,26 @@ nav::-webkit-scrollbar-thumb {
     background-color: #2a2a2a;
 }
 
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2a2a2a;
+}
+
 nav>ul {
     margin-right: 1.15rem;
     margin-left: 1.15rem;
 }
 
-main {
-    grid-area: main;
-}
+/* .data-unit {
+    width: fit-content;
+} */
 
 @layer base {
     .bg-main {
