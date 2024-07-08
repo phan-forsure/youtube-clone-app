@@ -15,8 +15,34 @@ header {
     grid-area: head;
 }
 
+section.videos {
+    grid-area: main;
+}
+
 nav {
     grid-area: nav;
+    height: 89vh;
+    width: 90%;
+    position: relative;
+    overflow-y: scroll;
+}
+
+nav::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+nav::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+nav::-webkit-scrollbar-thumb {
+    background-color: #2a2a2a;
+}
+
+nav>ul {
+    margin-right: 1.15rem;
+    margin-left: 1.15rem;
 }
 
 main {
@@ -36,11 +62,35 @@ main {
         background-color: #1f1f1f;
     }
 
+    .bg-light {
+        background-color: #222222;
+    }
+
     .border-second {
         border-color: #1f1f1f;
     }
 
+    .border-light {
+        border-color: #2a2a2a;
+    }
+
     .border-1 {
         border-width: 1px;
+    }
+
+    .border-b-1 {
+        border-bottom-width: 1px;
+    }
+
+    .border-t-1 {
+        border-top-width: 1px;
+    }
+
+    .border-l-1 {
+        border-left-width: 1px;
+    }
+
+    .border-r-1 {
+        border-right-width: 1px;
     }
 }
