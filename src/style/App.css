@@ -10,13 +10,19 @@ body {
 .app {
     grid-template-areas:
         'head head head head head head head head head head'
-        'nav nav main main main main main main main main';
+        'nav nav main main main main main main main main'
+        'vid vid vid vid vid vid vid bar bar bar';
 }
 
 .not-nav {
     grid-template-areas:
         'head head head head head head head head head head'
         'nav main main main main main main main main main';
+}
+
+.video-bar {
+    grid-area: bar;
+    height: 89vh;
 }
 
 header {
@@ -65,9 +71,11 @@ nav>ul {
     margin-left: 1.15rem;
 }
 
-/* .data-unit {
-    width: fit-content;
-} */
+.video {
+    grid-area: vid;
+    width: 63.5rem;
+    height: calc(55rem * 2/3);
+}
 
 @layer base {
     .bg-main {
