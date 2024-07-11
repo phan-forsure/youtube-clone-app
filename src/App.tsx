@@ -11,13 +11,16 @@ export const queryContext = createContext(null)
 
 function App() {
   const [nav,setNav] = useState(true)
-  const path = useLocation()
+  const path = useLocation().pathname
   const query = useQuery({ queryKey: ['vidoes'], queryFn: () => fetchVideo() })
-  console.log(query.data)
-  console.log(path.pathname)
 
   async function fetchVideo() {
-      const url = `https://youtube-v3-alternative.p.rapidapi.com/${path.pathname.slice(1).toLowerCase() === 'music' || path.pathname.slice(1).toLowerCase() === 'movies' || path.pathname.slice(1).toLowerCase() === 'games' || path.pathname === '/' || path.pathname.slice(1).toLowerCase() === 'home' ? `trending?${path.pathname.slice(1).toLowerCase() !== '' ? `type=${path.pathname.slice(1).toLowerCase()}` : ''}` : `search?query=${path.pathname.slice(1).toLowerCase()}`}&geo=US&lang=en&maxResults=50`
+      const url = `https://youtube-v3-alternative.p.rapidapi.com/${path.slice(1).toLowerCase() === 'music' ||
+            path.toLowerCase() === 'movies' ||
+            path.slice(1).toLowerCase() === 'games' || 
+            path === '/' || 
+            path.slice(1).toLowerCase() === 'home' ||
+            path.slice(1).toLowerCase() === 'popular' ? `trending?${path.slice(1).toLowerCase() !== '' ? `type=${path.slice(1).toLowerCase()}` : ''}` : `search?query=${path.slice(1).toLowerCase()}`}&geo=US&lang=en&maxResults=50`
       const options = {
       method: 'GET',
       headers: {

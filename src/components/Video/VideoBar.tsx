@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { apiKey, apiUrl } from '../api';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 async function fetchVideoBar(related: string) {
   const url = `https://youtube-v3-alternative.p.rapidapi.com/related?id=${related}&geo=US&lang=en&maxResults=50`
@@ -18,16 +18,20 @@ async function fetchVideoBar(related: string) {
 }
 
 function Videos() {
-  const videoId = useLocation()
-  const query = useQuery({ queryKey: ['videoBar'], queryFn: () => fetchVideoBar(videoId.pathname.slice(7))})
+  const videoId = useParams()
+  const query = useQuery({ queryKey: ['videoBar'], queryFn: () => fetchVideoBar(videoId.videoId)})
 
-  console.log(query.data)
+  if (query.isFetching) {
+    return <p className="text-white m-12">Loading...</p>
+  }
 
   return (
     query.data?.data.map(video => {
       return (
-        <Link to={'/'}>
-          <li className="p-2 w-full text-white flex" key={video.videoId}>
+        <Link onClick={() => setTimeout(() => {
+            query.refetch()
+        }, 1000)} to={`/video/${video.videoId}`}>
+          <li className="p-2 w-full text-white flex relative left-0 hover:left-1 transition-all" key={video.videoId}>
             <img className="h-28 rounded-lg" src={video.thumbnail[1].url} alt='youtube recommendation' />
             <div className='mx-4 my-2'>
               <p className='overflow-hidden'>{video.title}</p>
