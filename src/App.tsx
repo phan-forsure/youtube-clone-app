@@ -32,14 +32,23 @@ function App() {
       const response = await fetch(url, options)
       return response.json()
   }
-
+  
   useEffect(() => {
     if (!nav) {
       document.querySelector('.app').classList.add("not-nav")
     } else {
       document.querySelector('.app').classList.remove("not-nav")
     }
+
   },[nav])
+
+  useEffect(() => {
+    if (window.location.pathname.slice(0, 5) === '/video') {
+      return;
+    } else {
+      query.refetch()
+    }
+  }, [path])
 
   return (
     <>

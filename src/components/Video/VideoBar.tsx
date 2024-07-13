@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { apiKey, apiUrl } from '../api';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 async function fetchVideoBar(related: string) {
   const url = `https://youtube-v3-alternative.p.rapidapi.com/related?id=${related}&geo=US&lang=en&maxResults=50`
@@ -19,18 +19,25 @@ async function fetchVideoBar(related: string) {
 
 function Videos() {
   const videoId = useParams()
+  const location = useLocation()
   const query = useQuery({ queryKey: ['videoBar'], queryFn: () => fetchVideoBar(videoId.videoId)})
+  
+  useEffect(() => {
+    query.refetch()
+  }, [location])
 
   if (query.isFetching) {
     return <p className="text-white m-12">Loading...</p>
   }
 
+  if (query.isError) {
+    return <p className="text-white m-12">Error: {query.error.message}</p>
+  }
+
   return (
     query.data?.data.map(video => {
       return (
-        <Link onClick={() => setTimeout(() => {
-            query.refetch()
-        }, 1000)} to={`/video/${video.videoId}`}>
+        <Link replace to={`/video/${video.videoId}`}>
           <li className="p-2 w-full text-white flex relative left-0 hover:left-1 transition-all" key={video.videoId}>
             <img className="h-28 rounded-lg" src={video.thumbnail[1].url} alt='youtube recommendation' />
             <div className='mx-4 my-2'>
@@ -46,7 +53,7 @@ function Videos() {
 
 export default function VideoBar() {
   return (
-    <section className='video-bar overflow-y-scroll'>
+    <section className='video-bar overflow-y-scroll overflow-x-hidden'>
       <ul className="w-full">
         <Videos />
       </ul>

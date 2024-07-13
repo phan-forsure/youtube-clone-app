@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
 import { queryContext } from '../../App'
 import { useQuery } from '@tanstack/react-query'
 import { apiKey, apiUrl } from '../api'
@@ -21,14 +21,16 @@ async function fetchDetails(related: string) {
 export default function Video() {
   const query = useContext(queryContext)
   const videoId = useParams().videoId
-
+  const location = useLocation()
   const queryData = useQuery({queryKey: ['videoDetails'], queryFn: () => fetchDetails(videoId)})
+
+  useEffect(() => {
+    queryData.refetch()
+  }, [location])
 
   if (query.isFetching) {
     return <p className="text-white m-12">Loading...</p>
   }
-
-  document.querySelectorAll('.video-bar ul a').forEach(e => e.addEventListener('click', () => queryData.refetch()))
 
   return (
     <section className="video m-8 mx-auto flex flex-wrap">
