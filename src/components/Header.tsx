@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 export default function Header({ nav, setNav }) {
   const path = useLocation()
+  const searchQuery = useRef(null)
 
   return (
     <header className='flex justify-between p-4 items-center h-fit sticky top-0 z-10 bg-main'>
@@ -13,10 +14,10 @@ export default function Header({ nav, setNav }) {
         <Link to={'/'}><img className='ml-2 w-24 h-fit' src="../../../public/yt-logo.d6505fbc930734374cea.png" alt="Youtube" /></Link>
       </div>
         <div className='text-gray-400 flex flex-wrap items-center w-6/12 justify-center'>
-            <input className='bg-main border-1 border-second p-4 w-9/12 h-12 pr-8 rounded-3xl rounded-r-none focus:outline-none focus:border-blue-900' type="text" id="" placeholder='Search' />
-            <button className='bg-sec border-1 border-second p-3 w-20 h-12 rounded-3xl cursor-pointer rounded-l-none flex justify-center items-center' type="submit" id="" title='Search' onClick={e => e.preventDefault()}>
+            <input ref={searchQuery} className='search-bar bg-main border-1 border-second p-4 w-9/12 h-12 pr-8 rounded-3xl rounded-r-none focus:outline-none focus:border-blue-900' type="text" id="" placeholder='Search' />
+            <Link to={`/searchResults/${searchQuery.current.value}`} className='bg-sec border-1 border-second p-3 w-20 h-12 rounded-3xl cursor-pointer rounded-l-none flex justify-center items-center' title='Search'>
               <i className='fa-solid fa-search text-xl mr-2'></i>
-            </button>
+            </Link>
         </div>
         <div className='flex items-center'>
             <i className='fa-solid fa-bell text-2xl flex justify-center items-center text-white mr-2 cursor-pointer hover:bg-light w-12 h-12 rounded-full'></i>

@@ -11,7 +11,8 @@ body {
     grid-template-areas:
         'head head head head head head head head head head'
         'nav nav main main main main main main main main'
-        'vid vid vid vid vid vid vid bar bar bar';
+        'vid vid vid vid vid vid vid bar bar bar'
+        'res res res res res res res res res res';
 }
 
 .not-nav {
@@ -75,6 +76,15 @@ nav>ul {
     grid-area: vid;
     width: 63.5rem;
     height: calc(55rem * 2/3);
+}
+
+.search-results {
+    grid-area: res;
+}
+
+.search-unit img {
+    width: 35rem;
+    height: calc(30rem * 2/3);
 }
 
 @layer base {

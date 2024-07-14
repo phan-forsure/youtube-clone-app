@@ -6,6 +6,7 @@ import VideoPage from './components/Video/VideoPage'
 import NotFound from './components/NotFound'
 import { useQuery } from '@tanstack/react-query';
 import { apiKey, apiUrl } from './components/api'
+import SearchPage from './components/SearchResults/SearchPage'
 
 export const queryContext = createContext(null)
 
@@ -59,6 +60,7 @@ function App() {
             <Route path="/" element={<HomePage nav={nav}/>} />
             <Route path="/video/:videoId" element={<VideoPage />} />
             <Route path="/:category" element={<HomePage nav={nav} />} />
+            <Route path="/searchResults/:query" element={<SearchPage />} />
             <Route path="/video/undefined" element={<NotFound />} />
           </Routes>
         </queryContext.Provider>
