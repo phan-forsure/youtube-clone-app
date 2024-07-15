@@ -1,4 +1,3 @@
-import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { apiKey, apiUrl } from '../api'
 import { Link, useParams } from 'react-router-dom';
