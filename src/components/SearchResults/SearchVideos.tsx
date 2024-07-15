@@ -1,9 +1,9 @@
-import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { apiKey, apiUrl } from '../api'
 import { Link, useParams } from 'react-router-dom';
 
-async function fetchResults({ query }) {
+async function fetchResults(query) {
     const options = {
         method: 'GET',
         headers: {
@@ -39,7 +39,8 @@ function Video({ query }) {
 
 export default function SearchVideos() {
     const searchQuery = useParams()
-    const query = useQuery({queryKey: ['results'], queryFn: () => fetchResults(searchQuery.searchQuery)})
+    console.log(searchQuery)
+    const query = useQuery({queryKey: ['results'], queryFn: () => fetchResults(searchQuery.query)})
 
     if (query.isError) {
         return <h1 className="text-white">Error: {query.error.message}</h1>
