@@ -12,9 +12,6 @@ async function fetchResults(query) {
         }
     };
 
-    // const queryWord = document.querySelector('input.search-bar');
-    // console.log(queryWord.innerHTML)
-
     const response = await fetch(`https://youtube-v31.p.rapidapi.com/search?query=${query}&type=video&part=snippet%2Cid&maxResults=50`, options)
     return await response.json()
 }
@@ -39,7 +36,6 @@ function Video({ query }) {
 
 export default function SearchVideos() {
     const searchQuery = useParams()
-    console.log(searchQuery)
     const query = useQuery({queryKey: ['results'], queryFn: () => fetchResults(searchQuery.query)})
 
     if (query.isError) {
@@ -49,8 +45,6 @@ export default function SearchVideos() {
     if (query.isFetching) {
         return <p className="text-white">Loading...</p>
     }
-
-    console.log(query.data)
 
     return (
         <section className="search-results mx-40">

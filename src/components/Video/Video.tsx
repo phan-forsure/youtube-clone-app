@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import { queryContext } from '../../App'
 import { useQuery } from '@tanstack/react-query'
