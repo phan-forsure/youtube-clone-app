@@ -21,7 +21,7 @@ function App() {
             path.slice(1).toLowerCase() === 'games' || 
             path === '/' || 
             path.slice(1).toLowerCase() === 'home' ||
-            path.slice(1).toLowerCase() === 'popular' ? `trending?${path.slice(1).toLowerCase() !== '' ? `type=${path.slice(1).toLowerCase()}` : ''}` : `search?query=${path.slice(1).toLowerCase()}`}&geo=US&lang=en&maxResults=50`
+            path.slice(1).toLowerCase() === 'popular' ? `trending?${path.slice(1).toLowerCase() !== '' ? `type=${path.slice(1).toLowerCase()}` : ''}` : `search?query=${path.slice(1).toLowerCase()}`}&type=video&geo=US&lang=en&maxResults=50`
 
       const options = {
       method: 'GET',
