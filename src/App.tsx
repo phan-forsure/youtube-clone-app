@@ -5,7 +5,7 @@ import HomePage from './components/Home/HomePage'
 import VideoPage from './components/Video/VideoPage'
 import NotFound from './components/NotFound'
 import { useQuery } from '@tanstack/react-query';
-import { apiKey, apiUrl } from './components/api'
+import { apiKey, apiUrl } from './components/api.ts'
 import SearchPage from './components/SearchResults/SearchPage'
 
 export const queryContext = createContext(null)
@@ -32,6 +32,9 @@ function App() {
       };
 
       const response = await fetch(url, options)
+      if (!response.ok) {
+        return console.error('error 404: not found')
+      }
       return response.json()
   }
   

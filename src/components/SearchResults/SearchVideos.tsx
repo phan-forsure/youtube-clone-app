@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { apiKey, apiUrl } from '../api'
+import { apiKey, apiUrl } from '../api.ts'
 import { Link, useParams } from 'react-router-dom';
 
 async function fetchResults(query) {

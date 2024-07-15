@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query';
-import { apiKey, apiUrl } from '../api';
+import { apiKey, apiUrl } from '../api.ts';
 import { Link, useLocation, useParams } from 'react-router-dom';
 
 async function fetchVideoBar(related: string) {

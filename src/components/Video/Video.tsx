@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { useLocation, useParams } from 'react-router-dom'
 import { queryContext } from '../../App'
 import { useQuery } from '@tanstack/react-query'
-import { apiKey, apiUrl } from '../api'
+import { apiKey, apiUrl } from '../api.ts'
 
 async function fetchDetails(related: string) {
   const url = `https://youtube-v31.p.rapidapi.com/video?part=contentDetails%2Csnippet%2Cstatistics&id=${related}`
