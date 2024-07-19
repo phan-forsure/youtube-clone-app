@@ -20,7 +20,7 @@ async function fetchVideoBar(related: string) {
 function Videos() {
   const videoId = useParams()
   const location = useLocation()
-  const query = useQuery({ queryKey: ['videoBar'], queryFn: () => fetchVideoBar(videoId.videoId)})
+  const query = useQuery({ queryKey: ['videoBar'], queryFn: () => fetchVideoBar(videoId.videoId), staleTime: 72000})
   
   useEffect(() => {
     query.refetch()
@@ -38,11 +38,11 @@ function Videos() {
     query.data?.data.map(video => {
       return (
         <Link replace to={`/video/${video.videoId}`}>
-          <li className="p-2 w-full text-white flex relative left-0 hover:left-1 transition-all" key={video.videoId}>
+          <li className="p-2 w-full text-white flex relative left-0 hover:left-1 transition-all h-32" key={video.videoId}>
             <img className="h-28 rounded-lg" src={video.thumbnail[1].url} alt='youtube recommendation' />
-            <div className='mx-4 my-2'>
-              <p className='overflow-hidden'>{video.title}</p>
-              <p className='overflow-hidden opacity-60'>{video.channelTitle}</p>
+            <div className='mx-4 my-2 w-32'>
+              <p className='overflow-ellipsis line-clamp-3 overflow-hidden'>{video.title}</p>
+              <p className='overflow-ellipsis whitespace-nowrap overflow-hidden opacity-60'>{video.channelTitle}</p>
             </div>
           </li>
         </Link>

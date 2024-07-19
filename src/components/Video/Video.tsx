@@ -22,7 +22,7 @@ export default function Video() {
   const query = useContext(queryContext)
   const videoId = useParams().videoId
   const location = useLocation()
-  const queryData = useQuery({queryKey: ['videoDetails'], queryFn: () => fetchDetails(videoId)})
+  const queryData = useQuery({queryKey: ['videoDetails'], queryFn: () => fetchDetails(videoId), staleTime: 72000})
 
   useEffect(() => {
     queryData.refetch()
@@ -37,7 +37,7 @@ export default function Video() {
       <iframe className='w-full h-full' src={"https://www.youtube.com/embed/" + videoId}></iframe>
       <div className='flex flex-wrap w-6/12 mt-4'>
         <h2 className='text-white w-full'>{queryData.data?.title}</h2> 
-        <h2 className='text-white w-full'>{queryData.data?.channelTitle}</h2>         
+        <h2 className='text-white w-full opacity-60'>{queryData.data?.channelTitle}</h2>         
       </div>
       <div className='flex flex-wrap w-6/12 mt-4'> 
         <p className='text-white w-full text-end opacity-65'>{queryData.data?.viewCount + ' views'}</p>
