@@ -24,22 +24,12 @@ function LinksThree() {
 
 export default function Navbar({ nav }) {
   return (
-    nav ? (
-      <nav className='ml-3'>
+    nav && (
+      <nav className='ml-3 bg-main'>
         <ul className='text-white border-b-1 py-4 border-light'><LinksOne /></ul>
         <ul className='text-white border-b-1 py-4 border-light'><LinksTwo /></ul>
         <ul className='text-white border-b-1 py-4 border-light'><LinksThree /></ul>
       </nav>
-   ) : (
-   <nav className='w-fit ml-2'>
-     <ul className='text-white border-b-1 py-4 border-light'>
-      {linksOne.map((link: string) => <Link to={'/' + link.toLowerCase()}><li key={link} className='flex items-center justify-center w-16 flex-wrap cursor-pointer py-3 hover:bg-light rounded-xl text-sm'><i className={`m-2 text-lg fa-solid fa-${link === "Home" ? "home" : link === "Popular" ? "star" : link === "Coding" ? "code" : ""}`}></i>{link}</li></Link>)} 
-    </ul>
-
-     <ul className='text-white border-b-1 py-4 border-light'>
-      {linksTwo.slice(0, 3).map((link: string) => <Link to={'/' + link.toLowerCase()}><li key={link} className='flex items-center justify-center w-16 flex-wrap cursor-pointer py-3 hover:bg-light rounded-xl text-sm'><i className={`m-2 text-lg fa-solid fa-${link === "Sports" ? "medal" : link === "Games" ? "headset" : link === "News" ? "newspaper" : link === "Education" ? "school" : link === "Movies" ? "film" : link === "Music" ? "music" : ""}`}></i>{link}</li></Link>)}
-     </ul>
-   </nav>
    )
   )
 }

@@ -37,6 +37,16 @@ function App() {
       }
       return response.json()
   }
+
+  useEffect(() => {
+    window.matchMedia("(max-width: 1024px)").onchange = () => {
+      if (window.matchMedia("(max-width: 1024px)").matches) {
+        setNav(false)
+      } else {
+        setNav(true)
+      }
+    }
+  }, [])
   
   useEffect(() => {
     if (!nav) {
@@ -44,7 +54,6 @@ function App() {
     } else {
       document.querySelector('.app').classList.remove("not-nav")
     }
-
   },[nav])
 
   useEffect(() => {

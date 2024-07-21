@@ -18,7 +18,9 @@ body {
 .not-nav {
     grid-template-areas:
         'head head head head head head head head head head'
-        'nav main main main main main main main main main';
+        'main main main main main main main main main main'
+        'vid vid vid vid vid vid vid bar bar bar'
+        'res res res res res res res res res res' !important;
 }
 
 .video-bar {
@@ -42,6 +44,7 @@ nav {
     position: sticky;
     top: 79px;
     overflow-y: scroll;
+    z-index: 5;
 }
 
 nav::-webkit-scrollbar {
@@ -138,7 +141,7 @@ nav>ul {
     .app {
         grid-template-areas:
             'head head head head head head head head head head'
-            'nav nav main main main main main main main main'
+            'main main main main main main main main main main'
             'vid vid vid vid vid vid vid vid vid vid'
             'bar bar bar bar bar bar bar bar bar bar'
             'res res res res res res res res res res';
@@ -155,11 +158,18 @@ nav>ul {
     }
 
     .video {
-        height: calc(80vw * 2/3);
+        height: calc(70vw * 2/3);
     }
 
     .video iframe {
         height: 88%;
+    }
+
+    nav {
+        width: 20rem;
+        position: fixed;
+        margin-left: 0 !important;
+        height: 91vh !important;
     }
 }
 
