@@ -87,8 +87,10 @@ nav>ul {
 }
 
 .search-unit img {
-    width: 35rem;
-    height: calc(30rem * 2/3);
+    max-width: 500px;
+    min-width: 240px;
+    height: 290px;
+    object-fit: cover;
 }
 
 @layer base {
@@ -138,6 +140,14 @@ nav>ul {
 }
 
 @media (max-width: 1024px) {
+    .search-unit img {
+        height: 200px;
+    }
+
+    section.search-results {
+        margin: 0 5rem;
+    }
+
     .app {
         grid-template-areas:
             'head head head head head head head head head head'
@@ -174,6 +184,24 @@ nav>ul {
 }
 
 @media (max-width: 767px) {
+    .search-unit img {
+        height: 290px;
+    }
+
+    .search-unit .video-content {
+        width: 80%;
+        margin: 1rem;
+    }
+
+    section.search-results {
+        margin: 0 1rem;
+    }
+
+    .search-unit {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
     .home-button {
         display: none;
     }
