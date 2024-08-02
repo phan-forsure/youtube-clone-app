@@ -1029,16 +1029,23 @@ nav>ul {
   }
 
   .search-unit .video-content {
-    width: 80%;
-    margin: 1rem;
+    width: 5.2in;
+    margin: 1rem 0;
   }
 
   section.search-results {
-    margin: 0 1rem;
+    margin: .5rem;
   }
 
   .search-unit {
     flex-wrap: wrap;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .search-unit .image-container {
+    width: 100%;
+    display: flex;
     justify-content: center;
   }
 
@@ -1064,6 +1071,12 @@ nav>ul {
 
   .search-bar {
     width: 50%;
+  }
+}
+
+@media (max-width: 520px) {
+  .search-unit .image-container a img {
+    height: 55vw;
   }
 }
 

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Videos({ query }) {    
 
-    if (query.isPending) {
+    if (query.isFetching) {
         return <div className="text-white">Loading...</div>
     }
 

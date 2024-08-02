@@ -20,7 +20,7 @@ function Video({ query }) {
         <div>
             {query.data?.data.map(item => (
                 <div className='search-unit flex m-8 cursor-pointer overflow-hidden transition-all relative left-0 hover:left-1' key={item.videoId}>
-                    <div>
+                    <div className='image-container'>
                         <Link to={`/video/${item.videoId}`} ><img className="rounded-lg aspect-video" src={item.thumbnail[0].url} alt='video thumbnail' /></Link>
                     </div>
                     <div className='text-white mx-4 video-content'>
