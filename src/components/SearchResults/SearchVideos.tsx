@@ -47,6 +47,13 @@ export default function SearchVideos() {
         return <p className="text-white">Loading...</p>
     }
 
+    const searchBtn = document.querySelector('.search-button')
+    searchBtn.addEventListener('click', () => {
+        setTimeout(() => {
+            query.refetch()
+        }, 1);
+    })
+
     return (
         <section className="search-results mx-40">
             <Video query={query} />

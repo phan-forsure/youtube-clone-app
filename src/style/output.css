@@ -994,11 +994,13 @@ nav>ul {
             'main main main main main main main main main main'
             'vid vid vid vid vid vid vid vid vid vid'
             'bar bar bar bar bar bar bar bar bar bar'
-            'res res res res res res res res res res';
+            'res res res res res res res res res res' !important;
   }
 
   section.video-bar {
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
+    text-overflow: ellipsis;
     margin: 0 1rem;
   }
 
@@ -1024,6 +1026,10 @@ nav>ul {
 }
 
 @media (max-width: 767px) {
+  .video-bar {
+    overflow-y: visible !important;
+  }
+
   .search-unit img {
     height: 290px;
   }
@@ -1077,6 +1083,10 @@ nav>ul {
 @media (max-width: 520px) {
   .search-unit .image-container a img {
     height: 55vw;
+  }
+
+  .video-bar {
+    margin-top: 4rem !important;
   }
 }
 
