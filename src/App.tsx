@@ -11,7 +11,7 @@ import SearchPage from './components/SearchResults/SearchPage'
 export const queryContext = createContext(null)
 
 function App() {
-  const [nav,setNav] = useState(true)
+  const [nav,setNav] = useState(false)
   const path = useLocation().pathname
   const query = useQuery({ queryKey: ['vidoes'], queryFn: () => fetchVideo() })
 
